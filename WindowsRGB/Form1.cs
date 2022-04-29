@@ -28,27 +28,48 @@ namespace WindowsRGB
             return bm;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void CreateRects(object sender, EventArgs e)
         {
             Bitmap bmp = GetSreenshot();
+            if (checkBoxRight.Checked) GetColRight(ref bmp);
+            if(checkBoxLeft.Checked) GetColLeft(ref bmp);
+            if(checkBoxTop.Checked) GetRowTop(ref bmp);
+            if(checkBoxBottom.Checked) GetRowBottom(ref bmp);
+            pictureBox1.Image = bmp;
+        }
+
+        private void Start(object sender, EventArgs e)
+        {
+            if (timer1.Enabled)
+            {
+                timer1.Stop();
+                button2.Text = "Start";
+            }
+            else
+            {
+                timer1.Start();
+                button2.Text = "Stop";
+            }
+        }
+
+        private void GetColLeft(ref Bitmap bmp)
+        {
             Graphics g = Graphics.FromImage(bmp);
 
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
-
             int length = Screen.PrimaryScreen.Bounds.Height / numHeight;
+
             for (int i = 0; i < Screen.PrimaryScreen.Bounds.Height; i += length)
             {
                 int R = 0;
                 int G = 0;
                 int B = 0;
 
-                for (int x = i; x < i + length; x++)
+                for (int x = i; x < i + length && x < bmp.Height; x++)
                 {
-                        var px = bmp.GetPixel(x, x);
-                        R += px.R;
-                        G += px.G;
-                        B += px.B;
+                    var px = bmp.GetPixel(0, x);
+                    R += px.R;
+                    G += px.G;
+                    B += px.B;
                 }
 
                 R /= length;
@@ -60,23 +81,111 @@ namespace WindowsRGB
                 g.FillRectangle(br, rect);
 
             }
-
-            stopwatch.Stop();
-
-            pictureBox1.Image = bmp;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void GetColRight(ref Bitmap bmp)
         {
-            if(timer1.Enabled)
+            Graphics g = Graphics.FromImage(bmp);
+
+            int length = Screen.PrimaryScreen.Bounds.Height / numHeight;
+            int max = Screen.PrimaryScreen.Bounds.Width - 1;
+
+            for (int i = 0; i < Screen.PrimaryScreen.Bounds.Height; i += length)
             {
-                timer1.Stop();
-                button2.Text = "Start";
-            } else
-            {
-                timer1.Start();
-                button2.Text = "Stop";
+                int R = 0;
+                int G = 0;
+                int B = 0;
+
+                for (int x = i; x < i + length && x < bmp.Height; x++)
+                {
+                    var px = bmp.GetPixel(max, x);
+                    R += px.R;
+                    G += px.G;
+                    B += px.B;
+                }
+
+                R /= length;
+                G /= length;
+                B /= length;
+
+                SolidBrush br = new SolidBrush(Color.FromArgb(R, G, B));
+                Rectangle rect = new Rectangle(max - length, i, length, length);
+                g.FillRectangle(br, rect);
+
             }
+        }
+
+        private void GetRowTop(ref Bitmap bmp)
+        {
+            Graphics g = Graphics.FromImage(bmp);
+
+            int length = Screen.PrimaryScreen.Bounds.Width / numWidth;
+
+            for (int i = 0; i < Screen.PrimaryScreen.Bounds.Width; i += length)
+            {
+                int R = 0;
+                int G = 0;
+                int B = 0;
+
+                for (int x = i; x < i + length && x < bmp.Width; x++)
+                {
+                    var px = bmp.GetPixel(x, 0);
+                    R += px.R;
+                    G += px.G;
+                    B += px.B;
+                }
+
+                R /= length;
+                G /= length;
+                B /= length;
+
+                SolidBrush br = new SolidBrush(Color.FromArgb(R, G, B));
+                Rectangle rect = new Rectangle(i, 0, length, length);
+                g.FillRectangle(br, rect);
+
+            }
+        }
+
+        private void GetRowBottom(ref Bitmap bmp)
+        {
+            Graphics g = Graphics.FromImage(bmp);
+
+            int length = Screen.PrimaryScreen.Bounds.Width / numWidth;
+            int max = Screen.PrimaryScreen.Bounds.Height - 1;
+
+            for (int i = 0; i < Screen.PrimaryScreen.Bounds.Width; i += length)
+            {
+                int R = 0;
+                int G = 0;
+                int B = 0;
+
+                for (int x = i; x < i + length && x < bmp.Width; x++)
+                {
+                    var px = bmp.GetPixel(x, max - length);
+                    R += px.R;
+                    G += px.G;
+                    B += px.B;
+                }
+
+                R /= length;
+                G /= length;
+                B /= length;
+
+                SolidBrush br = new SolidBrush(Color.FromArgb(R, G, B));
+                Rectangle rect = new Rectangle(i, max - length, length, length);
+                g.FillRectangle(br, rect);
+
+            }
+        }
+
+        private void numericWidth_ValueChanged(object sender, EventArgs e)
+        {
+            numWidth = ((int)numericWidth.Value);
+        }
+
+        private void numericHeight_ValueChanged(object sender, EventArgs e)
+        {
+            numHeight = ((int)numericHeight.Value);
         }
     }
 }
