@@ -51,6 +51,9 @@ namespace WindowsRGB
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
@@ -61,6 +64,7 @@ namespace WindowsRGB
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Location = new System.Drawing.Point(660, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(128, 23);
@@ -76,6 +80,7 @@ namespace WindowsRGB
             // 
             // button2
             // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.Location = new System.Drawing.Point(660, 41);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(128, 23);
@@ -86,6 +91,7 @@ namespace WindowsRGB
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.numericHeight);
             this.groupBox1.Controls.Add(this.numericWidth);
             this.groupBox1.Controls.Add(this.label2);
@@ -143,7 +149,10 @@ namespace WindowsRGB
             // 
             // checkBoxTop
             // 
+            this.checkBoxTop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxTop.AutoSize = true;
+            this.checkBoxTop.Checked = true;
+            this.checkBoxTop.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxTop.Location = new System.Drawing.Point(660, 153);
             this.checkBoxTop.Name = "checkBoxTop";
             this.checkBoxTop.Size = new System.Drawing.Size(45, 17);
@@ -153,6 +162,7 @@ namespace WindowsRGB
             // 
             // checkBoxBottom
             // 
+            this.checkBoxBottom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxBottom.AutoSize = true;
             this.checkBoxBottom.Location = new System.Drawing.Point(660, 176);
             this.checkBoxBottom.Name = "checkBoxBottom";
@@ -163,7 +173,10 @@ namespace WindowsRGB
             // 
             // checkBoxLeft
             // 
+            this.checkBoxLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxLeft.AutoSize = true;
+            this.checkBoxLeft.Checked = true;
+            this.checkBoxLeft.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxLeft.Location = new System.Drawing.Point(660, 199);
             this.checkBoxLeft.Name = "checkBoxLeft";
             this.checkBoxLeft.Size = new System.Drawing.Size(44, 17);
@@ -173,7 +186,10 @@ namespace WindowsRGB
             // 
             // checkBoxRight
             // 
+            this.checkBoxRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxRight.AutoSize = true;
+            this.checkBoxRight.Checked = true;
+            this.checkBoxRight.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxRight.Location = new System.Drawing.Point(660, 222);
             this.checkBoxRight.Name = "checkBoxRight";
             this.checkBoxRight.Size = new System.Drawing.Size(51, 17);
